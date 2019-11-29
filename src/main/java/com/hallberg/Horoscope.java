@@ -3,14 +3,10 @@ package com.hallberg;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Horoscope {
 
@@ -48,9 +44,7 @@ public class Horoscope {
             Element p = doc.select("p[style]").first();
             String rawText = p.text();
 
-            String periodText = rawText.replaceAll("((?:\\w+\\s){8}\\w+)(\\s)", "$1\n");
-            String commaText = periodText.replaceAll("(\\.\\s)", "$1\n");
-            String text = commaText.replaceAll("(,\\s)", "$1\n");
+            String text = rawText.replaceAll("((?:\\S+\\s){6}\\S+)(\\s)", "$1\n");
 
             String pipeDelimitedTitle = doc.title();
             String[] titleArray = pipeDelimitedTitle.split("\\|");
