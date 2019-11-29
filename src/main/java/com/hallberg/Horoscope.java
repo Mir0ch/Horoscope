@@ -17,7 +17,7 @@ public class Horoscope {
     public static void main(String[] args) throws IOException {
 
         String signInput;
-        String sign = "leo";
+        String sign = "";
 
         int monthInput;
         String month;
