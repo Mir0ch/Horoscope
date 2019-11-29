@@ -2,49 +2,49 @@ package com.hallberg;
 
 public class MonthPicker {
 
-    String select(String monthPicker) {
+    String select(int monthPicker) {
 
         String month;
 
         switch(monthPicker) {
-            case "JANUARY":
+            case 1:
                 month = "january";
                 break;
-            case "FEBRUARY":
+            case 2:
                 month = "february";
                 break;
-            case "MARCH":
+            case 3:
                 month = "march";
                 break;
-            case "APRIL":
+            case 4:
                 month = "april";
                 break;
-            case "MAY":
+            case 5:
                 month = "may";
                 break;
-            case "JUNE":
+            case 6:
                 month = "june";
                 break;
-            case "JULY":
+            case 7:
                 month = "july";
                 break;
-            case "AUGUST":
+            case 8:
                 month = "august";
                 break;
-            case "SEPTEMBER":
+            case 9:
                 month = "september";
                 break;
-            case "OCTOBER":
+            case 10:
                 month = "october";
                 break;
-            case "NOVEMBER":
+            case 11:
                 month = "november";
                 break;
-            case "DECEMBER":
+            case 12:
                 month = "december";
                 break;
             default:
-                month = "error";
+                month = "";
                 break;
         }
 

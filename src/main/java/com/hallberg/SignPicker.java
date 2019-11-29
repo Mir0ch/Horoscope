@@ -44,7 +44,7 @@ class SignPicker {
                 sign = "pisces";
                 break;
             default:
-                sign = "error";
+                sign = "";
                 break;
         }
 

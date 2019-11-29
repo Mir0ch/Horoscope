@@ -2,8 +2,10 @@ package com.hallberg;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Horoscope {
 
@@ -12,30 +14,40 @@ public class Horoscope {
         String signInput;
         String sign = "";
 
-        String monthInput;
-        String month = "";
+        int monthInput;
+        String month;
+        int year;
 
-        if((args.length == 2))
+        if(!(args.length == 0))
         {
             signInput = args[0].toUpperCase();
 
             SignPicker signPicker = new SignPicker();
             sign = signPicker.select(signInput);
-
-            monthInput = args[1].toUpperCase();
-
-            MonthPicker monthPicker = new MonthPicker();
-            month = monthPicker.select(monthInput);
         }
 
-        if(!sign.equals("error") || !month.equals("error")) {
-            String url = "https://www.sunsigns.org/" + sign + "-" + month + "-2019-horoscope/";
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        monthInput = localDate.getMonthValue();
+
+        MonthPicker monthPicker = new MonthPicker();
+        month = monthPicker.select(monthInput);
+
+        year = localDate.getYear();
+
+        if(!sign.equals("")) {
+
+            String url = "https://www.sunsigns.org/" + sign + "-" + month + "-" + year + "-horoscope/";
+
             Document doc = Jsoup.connect(url).get();
-            String title = doc.title();
-            System.out.println(title);
+
+            String pipeDelimitedTitle = doc.title();
+            String[] title = pipeDelimitedTitle.split("\\|");
+
+            System.out.println(title[0]);
         }
         else {
-            System.out.println("Usage: \"Horoscope your-sign month year\" i. e. \"Horoscope Leo November 2019\"");
+            System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
     }
