@@ -17,7 +17,7 @@ public class Horoscope {
     public static void main(String[] args) throws IOException {
 
         String signInput;
-        String sign = "";
+        String sign = "leo";
 
         int monthInput;
         String month;
@@ -49,7 +49,8 @@ public class Horoscope {
             String rawText = p.text();
 
             String periodText = rawText.replaceAll("((?:\\w+\\s){8}\\w+)(\\s)", "$1\n");
-            String text = periodText.replaceAll("(\\.\\s)", "$1\n");
+            String commaText = periodText.replaceAll("(\\.\\s)", "$1\n");
+            String text = commaText.replaceAll("(,\\s)", "$1\n");
 
             String pipeDelimitedTitle = doc.title();
             String[] titleArray = pipeDelimitedTitle.split("\\|");
@@ -64,27 +65,5 @@ public class Horoscope {
             System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
-    }
-
-    // Method that returns the count of the given
-    // character in the string
-    public static long count(String s, char ch)
-    {
-
-        // Use Matcher class of java.util.regex
-        // to match the character
-        Matcher matcher
-                = Pattern.compile(String.valueOf(ch))
-                .matcher(s);
-
-        int res = 0;
-
-        // for every presence of character ch
-        // increment the counter res by 1
-        while (matcher.find()) {
-            res++;
-        }
-
-        return res;
     }
 }
