@@ -12,22 +12,30 @@ public class Horoscope {
         String signInput;
         String sign = "";
 
-        if(!(args.length == 0))
+        String monthInput;
+        String month = "";
+
+        if((args.length == 2))
         {
             signInput = args[0].toUpperCase();
 
             SignPicker signPicker = new SignPicker();
             sign = signPicker.select(signInput);
+
+            monthInput = args[1].toUpperCase();
+
+            MonthPicker monthPicker = new MonthPicker();
+            month = monthPicker.select(monthInput);
         }
 
-        if(!sign.equals("error") && args.length == 1) {
-            String url = "https://www.sunsigns.org/" + sign + "-november-2019-horoscope/";
+        if(!sign.equals("error") || !month.equals("error")) {
+            String url = "https://www.sunsigns.org/" + sign + "-" + month + "-2019-horoscope/";
             Document doc = Jsoup.connect(url).get();
             String title = doc.title();
             System.out.println(title);
         }
         else {
-            System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"");
+            System.out.println("Usage: \"Horoscope your-sign month year\" i. e. \"Horoscope Leo November 2019\"");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
     }
