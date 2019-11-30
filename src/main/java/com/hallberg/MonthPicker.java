@@ -50,4 +50,18 @@ public class MonthPicker {
 
         return month;
     }
+
+    String next(String nextmonthPicker) {
+
+        String nextmonth;
+
+        if(nextmonthPicker.equals("NEXTMONTH")) {
+            nextmonth = "nextmonth";
+        }
+        else {
+            nextmonth = "";
+        }
+
+        return nextmonth;
+    }
 }

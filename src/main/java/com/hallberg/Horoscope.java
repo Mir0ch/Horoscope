@@ -14,6 +14,8 @@ public class Horoscope {
 
         String signInput;
         String sign = "";
+        String nextmonthInput;
+        String nextmonth = "";
 
         int monthInput;
         String month;
@@ -26,14 +28,31 @@ public class Horoscope {
             sign = signPicker.select(signInput);
         }
 
+        if(args.length > 1) {
+            nextmonthInput = args[1].toUpperCase();
+
+            MonthPicker monthPicker = new MonthPicker();
+            nextmonth = monthPicker.next(nextmonthInput);
+        }
+
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
         monthInput = localDate.getMonthValue();
+        year = localDate.getYear();
+
+        if(args.length > 1 && nextmonth.equals("nextmonth")) {
+
+            monthInput++;
+
+            if(monthInput == 13) {
+                monthInput = 1;
+                year++;
+            }
+        }
 
         MonthPicker monthPicker = new MonthPicker();
         month = monthPicker.select(monthInput);
-
-        year = localDate.getYear();
 
         if(!sign.equals("")) {
 
@@ -62,7 +81,8 @@ public class Horoscope {
             }
         }
         else {
-            System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"");
+            System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"\n" +
+                    "Add parameter \"nextmonth\" to get next months reading.");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
     }
