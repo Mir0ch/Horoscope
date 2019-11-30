@@ -58,6 +58,7 @@ public class Horoscope {
 
             } catch (IOException e) {
 
+                System.out.println();
                 System.out.printf("Can't connect to %s.\nCheck your internet connection.\n", e.getMessage());
             }
         }
