@@ -82,7 +82,7 @@ public class Horoscope {
         }
         else {
             System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"\n" +
-                    "Add parameter \"nextmonth\" to get next months reading.");
+                    "Add parameter \"nextmonth\" to get next month's reading.");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
     }
