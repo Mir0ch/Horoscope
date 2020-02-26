@@ -82,7 +82,8 @@ public class Horoscope {
         }
         else {
             System.out.println("Usage: \"Horoscope your-sign\" i. e. \"Horoscope Leo\"\n" +
-                    "Add parameter \"nextmonth\" to get next month's reading.");
+                    "Add parameter \"nextmonth\" to get next month's reading.\n" +
+                    "Copyright \u00a9 2020 Mikael Hallberg. All Rights Reserved.");
             // https://www.sunsigns.org/sagittarius-november-2019-horoscope/
         }
     }
